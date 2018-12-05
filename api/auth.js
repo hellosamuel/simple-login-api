@@ -39,7 +39,7 @@ router.post('/login',
             username: user.username
           };
           const secretOrPrivateKey = JWT_SECRET;
-          cosnt options = {expiresIn: 60*60*24};
+          const options = {expiresIn: 60*60*24};
           jwt.sign(payload, secretOrPrivateKey, options, function(err, token){
             if(err) return res.json(util.successFalse(err));
             res.json(util.successTrue(token));
