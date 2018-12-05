@@ -8,7 +8,7 @@ const MONGO_DB = 'WRITE HERE YOUR MONGO DB CONNECT INFORMATION';
 
 // Database
 mongoose.Promise = global.Promise;
-mongoose.connect(MONGO_DB, {useNewUrlParser: true});
+mongoose.connect(MONGO_DB, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.once('open', function () {
   console.log('DB connected!');
@@ -19,7 +19,7 @@ db.on('error', function (err) {
 
 // Middlewares
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');

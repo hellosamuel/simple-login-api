@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = 'MySuperSecretKey';
+const JWT_SECRET = 'MyPerfectSecretKey';
 
 let util = {};
 
