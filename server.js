@@ -4,7 +4,7 @@ const mongoose   = require('mongoose');
 const bodyParser = require('body-parser');
 const app        = express();
 
-const MONGO_DB = 'mongodb://dbuser:fkaus2ro@ds131721.mlab.com:31721/login_api';
+const MONGO_DB = 'WRITE HERE YOUR MONGO DB CONNECT INFORMARION';
 
 // Database
 mongoose.Promise = global.Promise;
