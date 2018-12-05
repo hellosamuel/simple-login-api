@@ -14,19 +14,19 @@ router.post('/login',
       errors:{}
     };
 
-    if(!req.body.username){
+    if(!req.body.username) {
       isValid = false;
-      validationError.errors.username = {message:'Username is required!'};
+      validationError.errors.username = {message: 'Username is required!'};
     }
-    if(!req.body.password){
+    if(!req.body.password) {
       isValid = false;
-      validationError.errors.password = {message:'Password is required!'};
+      validationError.errors.password = {message: 'Password is required!'};
     }
 
     if(!isValid) return res.json(util.successFalse(validationError));
     else next();
   },
-  function(req, res, next){
+  function(req, res, next) {
     User.findOne({username:req.body.username})
       .select({password: 1, username: 1, name: 1, email: 1})
       .exec(function(err, user){
@@ -40,7 +40,7 @@ router.post('/login',
           };
           const secretOrPrivateKey = JWT_SECRET;
           const options = {expiresIn: 60*60*24};
-          jwt.sign(payload, secretOrPrivateKey, options, function(err, token){
+          jwt.sign(payload, secretOrPrivateKey, options, function(err, token) {
             if(err) return res.json(util.successFalse(err));
             res.json(util.successTrue(token));
           });
@@ -73,7 +73,7 @@ router.get('/refresh', util.isLoggedin,
           };
           const secretOrPrivateKey = JWT_SECRET;
           const options = {expiresIn: 60*60*24};
-          jwt.sign(payload, secretOrPrivateKey, options, function(err, token){
+          jwt.sign(payload, secretOrPrivateKey, options, function(err, token) {
             if(err) return res.json(util.successFalse(err));
             res.json(util.successTrue(token));
           });

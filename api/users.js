@@ -4,7 +4,7 @@ const User     = require('../models/User');
 const util     = require('../util');
 
 // index
-router.get('/', util.isLoggedin, function(req, res, next){
+router.get('/', util.isLoggedin, function(req, res, next) {
   User.find({})
     .sort({username:1})
     .exec(function(err, users){
@@ -21,7 +21,7 @@ router.post('/', function(req, res, next){
 });
 
 // show
-router.get('/:username', util.isLoggedin, function(req, res, next){
+router.get('/:username', util.isLoggedin, function(req, res, next) {
   User.findOne({username:req.params.username})
     .exec(function(err, user){
       res.json(err||!user? util.successFalse(err): util.successTrue(user));
@@ -29,7 +29,7 @@ router.get('/:username', util.isLoggedin, function(req, res, next){
 });
 
 // update
-router.put('/:username', util.isLoggedin, checkPermission, function(req, res, next){
+router.put('/:username', util.isLoggedin, checkPermission, function(req, res, next) {
   User.findOne({username:req.params.username})
     .select({password:1})
     .exec(function(err, user){
@@ -54,7 +54,7 @@ router.put('/:username', util.isLoggedin, checkPermission, function(req, res, ne
 });
 
 // destroy
-router.delete('/:username', util.isLoggedin, checkPermission, function(req, res, next){
+router.delete('/:username', util.isLoggedin, checkPermission, function(req, res, next) {
   User.findOneAndRemove({username:req.params.username})
     .exec(function(err, user){
       res.json(err || !user? util.successFalse(err): util.successTrue(user));
@@ -64,8 +64,8 @@ router.delete('/:username', util.isLoggedin, checkPermission, function(req, res,
 module.exports = router;
 
 // private functions
-function checkPermission(req,res,next){ //*
-  User.findOne({username:req.params.username}, function(err, user){
+function checkPermission(req,res,next){
+  User.findOne({username:req.params.username}, function(err, user) {
     if(err || !user) return res.json(util.successFalse(err));
     else if(!req.decoded || user._id != req.decoded._id)
       return res.json(util.successFalse(null,'You don\'t have permission'));
