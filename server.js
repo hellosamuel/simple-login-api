@@ -8,7 +8,7 @@ const MONGO_DB = 'mongodb://dbuser:fkaus2ro@ds131721.mlab.com:31721/login_api';
 
 // Database
 mongoose.Promise = global.Promise;
-mongoose.connect(MONGO_DB);
+mongoose.connect(MONGO_DB, {useNewUrlParser: true});
 const db = mongoose.connection;
 db.once('open', function () {
   console.log('DB connected!');
