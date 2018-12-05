@@ -1,8 +1,8 @@
 ### Simple Login API
 * This is simple login api written by nodejs
-* This api use JWT(Json Web Token) instead of session on server
+* This api uses JWT(Json Web Token) instead of session on server
 * DB environment is MONGO_DB so if you want to test this api, you need to get MONGO DB connect information
-* Also you can get MONGO DB at [mLab](https://mlab.com/) for free (limit 500MB)
+* You can use MONGO DB(Cloud) at [mLab](https://mlab.com/) for free (limit 500MB)
 * If you got MONGO DB connect information, just put it in const MONGO_DB in `server.js` 
 * I recommend you to use `nodemon` to run server at local environment
 
